@@ -1,10 +1,58 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="mb-4">Service Auto – Panou principal</h1>
+
+<p>Bine ai venit, <strong>@User.Identity.Name</strong>!</p>
+
+<div class="row g-3">
+
+    <!-- CLIENTI -->
+    <div class="col-md-3">
+        <a asp-page="/Clients/Index" class="btn btn-outline-primary w-100">
+            Clienți
+        </a>
+    </div>
+
+    <!-- MASINI -->
+    <div class="col-md-3">
+        <a asp-page="/Masini/Index" class="btn btn-outline-primary w-100">
+            Mașini
+        </a>
+    </div>
+
+    <!-- PIESE -->
+    <div class="col-md-3">
+        <a asp-page="/PieseDeSchimb/Index" class="btn btn-outline-primary w-100">
+            Piese de schimb
+        </a>
+    </div>
+
+    <!-- INTERVENTII -->
+    <div class="col-md-3">
+        <a asp-page="/Interventii/Index" class="btn btn-outline-success w-100">
+            Intervenții
+        </a>
+    </div>
+
+    <!-- INTERVENTII PIESE -->
+    <div class="col-md-3">
+        <a asp-page="/InterventiePiese/Index" class="btn btn-outline-success w-100">
+            Piese în intervenții
+        </a>
+    </div>
+
+    @* DOAR ADMIN *@
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-3">
+            <a asp-page="/Mecanici/Index" class="btn btn-outline-danger w-100">
+                Mecanici (Admin)
+            </a>
+        </div>
+    }
+
 </div>

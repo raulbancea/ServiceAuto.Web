@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceAuto.Web.Data;
 using ServiceAuto.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ServiceAuto.Web.Pages.PieseDeSchimb
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly ServiceAuto.Web.Data.ServiceAutoContext _context;

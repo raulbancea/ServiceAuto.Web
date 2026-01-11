@@ -1,48 +1,68 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-page="/Index">ServiceAuto</a>
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-a {
-  color: #0077cc;
-}
+        <div class="collapse navbar-collapse" id="navbarMain">
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
+            <!-- LEFT MENU -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Index">Home</a>
+                </li>
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Clients/Index">Clienți</a>
+                </li>
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Masini/Index">Mașini</a>
+                </li>
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/PieseDeSchimb/Index">Piese</a>
+                </li>
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Interventii/Index">Intervenții</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/InterventiePiese/Index">
+                        Piese în intervenții
+                    </a>
+                </li>
+
+                @* DOAR ADMIN *@
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" asp-page="/Mecanici/Index">
+                            Mecanici
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <!-- RIGHT MENU -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span class="nav-link text-muted">
+                        @User.Identity.Name
+                        (@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value)
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-danger" asp-page="/Logout">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

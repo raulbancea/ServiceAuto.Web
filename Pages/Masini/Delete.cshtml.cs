@@ -1,12 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceAuto.Web.Data;
 using ServiceAuto.Web.Models;
+using System.Threading.Tasks;
 
 namespace ServiceAuto.Web.Pages.Masini
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly ServiceAutoContext _context;

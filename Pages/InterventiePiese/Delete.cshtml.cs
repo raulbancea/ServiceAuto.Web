@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceAuto.Web.Data;
@@ -6,6 +7,8 @@ using ServiceAuto.Web.Models;
 
 namespace ServiceAuto.Web.Pages.InterventiePiese
 {
+    [Authorize(Roles = "Admin,Mecanic")]
+
     public class DeleteModel : PageModel
     {
         private readonly ServiceAutoContext _context;
