@@ -20,7 +20,7 @@ namespace ServiceAuto.Web.Pages.Interventii
         }
 
         [BindProperty]
-        public InterventiePiesa InterventiePiesa { get; set; } = default!;
+        public Interventie Interventie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,11 +29,11 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return NotFound();
             }
 
-            var interventiepiesa = await _context.InterventiiPiese.FirstOrDefaultAsync(m => m.InterventieId == id);
+            var interventie = await _context.Interventii.FirstOrDefaultAsync(m => m.InterventieId == id);
 
-            if (interventiepiesa is not null)
+            if (interventie is not null)
             {
-                InterventiePiesa = interventiepiesa;
+                Interventie = interventie;
 
                 return Page();
             }
@@ -48,11 +48,11 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return NotFound();
             }
 
-            var interventiepiesa = await _context.InterventiiPiese.FindAsync(id);
-            if (interventiepiesa != null)
+            var interventie = await _context.Interventii.FindAsync(id);
+            if (interventie != null)
             {
-                InterventiePiesa = interventiepiesa;
-                _context.InterventiiPiese.Remove(InterventiePiesa);
+                Interventie = interventie;
+                _context.Interventii.Remove(Interventie);
                 await _context.SaveChangesAsync();
             }
 

@@ -19,13 +19,13 @@ namespace ServiceAuto.Web.Pages.Interventii
             _context = context;
         }
 
-        public IList<InterventiePiesa> InterventiePiesa { get;set; } = default!;
+        public IList<Interventie> Interventie { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            InterventiePiesa = await _context.InterventiiPiese
-                .Include(i => i.Interventie)
-                .Include(i => i.PiesaDeSchimb).ToListAsync();
+            Interventie = await _context.Interventii
+                .Include(i => i.Masina)
+                .Include(i => i.Mecanic).ToListAsync();
         }
     }
 }

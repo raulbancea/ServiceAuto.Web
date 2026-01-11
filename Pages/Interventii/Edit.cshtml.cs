@@ -21,7 +21,7 @@ namespace ServiceAuto.Web.Pages.Interventii
         }
 
         [BindProperty]
-        public InterventiePiesa InterventiePiesa { get; set; } = default!;
+        public Interventie Interventie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,14 +30,14 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return NotFound();
             }
 
-            var interventiepiesa =  await _context.InterventiiPiese.FirstOrDefaultAsync(m => m.InterventieId == id);
-            if (interventiepiesa == null)
+            var interventie =  await _context.Interventii.FirstOrDefaultAsync(m => m.InterventieId == id);
+            if (interventie == null)
             {
                 return NotFound();
             }
-            InterventiePiesa = interventiepiesa;
-           ViewData["InterventieId"] = new SelectList(_context.Interventii, "InterventieId", "DescriereProblema");
-           ViewData["PiesaDeSchimbId"] = new SelectList(_context.PieseDeSchimb, "PiesaDeSchimbId", "CodProdus");
+            Interventie = interventie;
+           ViewData["MasinaId"] = new SelectList(_context.Masini, "MasinaId", "Marca");
+           ViewData["MecanicId"] = new SelectList(_context.Mecanici, "MecanicId", "Email");
             return Page();
         }
 
@@ -50,7 +50,7 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return Page();
             }
 
-            _context.Attach(InterventiePiesa).State = EntityState.Modified;
+            _context.Attach(Interventie).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace ServiceAuto.Web.Pages.Interventii
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InterventiePiesaExists(InterventiePiesa.InterventieId))
+                if (!InterventieExists(Interventie.InterventieId))
                 {
                     return NotFound();
                 }
@@ -71,9 +71,9 @@ namespace ServiceAuto.Web.Pages.Interventii
             return RedirectToPage("./Index");
         }
 
-        private bool InterventiePiesaExists(int id)
+        private bool InterventieExists(int id)
         {
-            return _context.InterventiiPiese.Any(e => e.InterventieId == id);
+            return _context.Interventii.Any(e => e.InterventieId == id);
         }
     }
 }

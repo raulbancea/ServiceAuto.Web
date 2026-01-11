@@ -8,36 +8,48 @@
 <h1>Details</h1>
 
 <div>
-    <h4>InterventiePiesa</h4>
+    <h4>Interventie</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InterventiePiesa.Cantitate)
+            @Html.DisplayNameFor(model => model.Interventie.DataProgramare)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InterventiePiesa.Cantitate)
+            @Html.DisplayFor(model => model.Interventie.DataProgramare)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InterventiePiesa.PretUnitarLaDataAplicarii)
+            @Html.DisplayNameFor(model => model.Interventie.Status)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InterventiePiesa.PretUnitarLaDataAplicarii)
+            @Html.DisplayFor(model => model.Interventie.Status)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InterventiePiesa.Interventie)
+            @Html.DisplayNameFor(model => model.Interventie.DescriereProblema)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InterventiePiesa.Interventie.DescriereProblema)
+            @Html.DisplayFor(model => model.Interventie.DescriereProblema)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InterventiePiesa.PiesaDeSchimb)
+            @Html.DisplayNameFor(model => model.Interventie.ObservatiiMecanic)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InterventiePiesa.PiesaDeSchimb.CodProdus)
+            @Html.DisplayFor(model => model.Interventie.ObservatiiMecanic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Interventie.Masina)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Interventie.Masina.Marca)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Interventie.Mecanic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Interventie.Mecanic.Email)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-page="./Edit" asp-route-id="@Model.Interventie.InterventieId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

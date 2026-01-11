@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using ServiceAuto.Web.Data;
+using ServiceAuto.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using ServiceAuto.Web.Data;
-using ServiceAuto.Web.Models;
 
 namespace ServiceAuto.Web.Pages.InterventiePiese
 {
@@ -34,6 +35,19 @@ namespace ServiceAuto.Web.Pages.InterventiePiese
         {
             if (!ModelState.IsValid)
             {
+                OnGet();
+                return Page();
+            }
+
+            bool existaDeja = await _context.InterventiiPiese.AnyAsync(ip =>
+                ip.InterventieId == InterventiePiesa.InterventieId &&
+                ip.PiesaDeSchimbId == InterventiePiesa.PiesaDeSchimbId);
+
+            if (existaDeja)
+            {
+                ModelState.AddModelError(string.Empty,
+                    "Această piesă este deja asociată intervenției. Modificați cantitatea din listă.");
+                OnGet();
                 return Page();
             }
 

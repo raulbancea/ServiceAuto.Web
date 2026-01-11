@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceAuto.Web.Data;
@@ -12,9 +8,9 @@ namespace ServiceAuto.Web.Pages.InterventiePiese
 {
     public class DeleteModel : PageModel
     {
-        private readonly ServiceAuto.Web.Data.ServiceAutoContext _context;
+        private readonly ServiceAutoContext _context;
 
-        public DeleteModel(ServiceAuto.Web.Data.ServiceAutoContext context)
+        public DeleteModel(ServiceAutoContext context)
         {
             _context = context;
         }
@@ -22,37 +18,30 @@ namespace ServiceAuto.Web.Pages.InterventiePiese
         [BindProperty]
         public InterventiePiesa InterventiePiesa { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int interventieId, int piesaDeSchimbId)
         {
-            if (id == null)
+            InterventiePiesa = await _context.InterventiiPiese
+                .FirstOrDefaultAsync(m =>
+                    m.InterventieId == interventieId &&
+                    m.PiesaDeSchimbId == piesaDeSchimbId);
+
+            if (InterventiePiesa == null)
             {
                 return NotFound();
             }
 
-            var interventiepiesa = await _context.InterventiiPiese.FirstOrDefaultAsync(m => m.InterventieId == id);
-
-            if (interventiepiesa is not null)
-            {
-                InterventiePiesa = interventiepiesa;
-
-                return Page();
-            }
-
-            return NotFound();
+            return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var entity = await _context.InterventiiPiese.FirstOrDefaultAsync(m =>
+                m.InterventieId == InterventiePiesa.InterventieId &&
+                m.PiesaDeSchimbId == InterventiePiesa.PiesaDeSchimbId);
 
-            var interventiepiesa = await _context.InterventiiPiese.FindAsync(id);
-            if (interventiepiesa != null)
+            if (entity != null)
             {
-                InterventiePiesa = interventiepiesa;
-                _context.InterventiiPiese.Remove(InterventiePiesa);
+                _context.InterventiiPiese.Remove(entity);
                 await _context.SaveChangesAsync();
             }
 

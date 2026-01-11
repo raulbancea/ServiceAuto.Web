@@ -21,13 +21,13 @@ namespace ServiceAuto.Web.Pages.Interventii
 
         public IActionResult OnGet()
         {
-        ViewData["InterventieId"] = new SelectList(_context.Interventii, "InterventieId", "DescriereProblema");
-        ViewData["PiesaDeSchimbId"] = new SelectList(_context.PieseDeSchimb, "PiesaDeSchimbId", "CodProdus");
+        ViewData["MasinaId"] = new SelectList(_context.Masini, "MasinaId", "Marca");
+        ViewData["MecanicId"] = new SelectList(_context.Mecanici, "MecanicId", "Email");
             return Page();
         }
 
         [BindProperty]
-        public InterventiePiesa InterventiePiesa { get; set; } = default!;
+        public Interventie Interventie { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +37,7 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return Page();
             }
 
-            _context.InterventiiPiese.Add(InterventiePiesa);
+            _context.Interventii.Add(Interventie);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -14,39 +14,51 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InterventiePiesa[0].Cantitate)
+                @Html.DisplayNameFor(model => model.Interventie[0].DataProgramare)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InterventiePiesa[0].PretUnitarLaDataAplicarii)
+                @Html.DisplayNameFor(model => model.Interventie[0].Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InterventiePiesa[0].Interventie)
+                @Html.DisplayNameFor(model => model.Interventie[0].DescriereProblema)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InterventiePiesa[0].PiesaDeSchimb)
+                @Html.DisplayNameFor(model => model.Interventie[0].ObservatiiMecanic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interventie[0].Masina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Interventie[0].Mecanic)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.InterventiePiesa) {
+@foreach (var item in Model.Interventie) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cantitate)
+                @Html.DisplayFor(modelItem => item.DataProgramare)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PretUnitarLaDataAplicarii)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Interventie.DescriereProblema)
+                @Html.DisplayFor(modelItem => item.DescriereProblema)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PiesaDeSchimb.CodProdus)
+                @Html.DisplayFor(modelItem => item.ObservatiiMecanic)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Masina.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mecanic.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InterventieId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.InterventieId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.InterventieId">Delete</a>
             </td>
         </tr>
 }

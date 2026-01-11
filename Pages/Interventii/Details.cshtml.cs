@@ -19,7 +19,7 @@ namespace ServiceAuto.Web.Pages.Interventii
             _context = context;
         }
 
-        public InterventiePiesa InterventiePiesa { get; set; } = default!;
+        public Interventie Interventie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,11 +28,11 @@ namespace ServiceAuto.Web.Pages.Interventii
                 return NotFound();
             }
 
-            var interventiepiesa = await _context.InterventiiPiese.FirstOrDefaultAsync(m => m.InterventieId == id);
+            var interventie = await _context.Interventii.FirstOrDefaultAsync(m => m.InterventieId == id);
 
-            if (interventiepiesa is not null)
+            if (interventie is not null)
             {
-                InterventiePiesa = interventiepiesa;
+                Interventie = interventie;
 
                 return Page();
             }

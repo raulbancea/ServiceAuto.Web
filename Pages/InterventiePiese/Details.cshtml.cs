@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ServiceAuto.Web.Data;
@@ -12,32 +8,28 @@ namespace ServiceAuto.Web.Pages.InterventiePiese
 {
     public class DetailsModel : PageModel
     {
-        private readonly ServiceAuto.Web.Data.ServiceAutoContext _context;
+        private readonly ServiceAutoContext _context;
 
-        public DetailsModel(ServiceAuto.Web.Data.ServiceAutoContext context)
+        public DetailsModel(ServiceAutoContext context)
         {
             _context = context;
         }
 
         public InterventiePiesa InterventiePiesa { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int interventieId, int piesaDeSchimbId)
         {
-            if (id == null)
+            InterventiePiesa = await _context.InterventiiPiese
+                .FirstOrDefaultAsync(m =>
+                    m.InterventieId == interventieId &&
+                    m.PiesaDeSchimbId == piesaDeSchimbId);
+
+            if (InterventiePiesa == null)
             {
                 return NotFound();
             }
 
-            var interventiepiesa = await _context.InterventiiPiese.FirstOrDefaultAsync(m => m.InterventieId == id);
-
-            if (interventiepiesa is not null)
-            {
-                InterventiePiesa = interventiepiesa;
-
-                return Page();
-            }
-
-            return NotFound();
+            return Page();
         }
     }
 }

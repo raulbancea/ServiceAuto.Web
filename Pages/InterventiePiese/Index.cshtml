@@ -43,11 +43,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PiesaDeSchimb.CodProdus)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+                <td>
+                    <a asp-page="./Edit"
+                       asp-route-interventieId="@item.InterventieId"
+                       asp-route-piesaDeSchimbId="@item.PiesaDeSchimbId">
+                        Edit
+                    </a> |
+                    <a asp-page="./Details"
+                       asp-route-interventieId="@item.InterventieId"
+                       asp-route-piesaDeSchimbId="@item.PiesaDeSchimbId">
+                        Details
+                    </a> |
+                    <a asp-page="./Delete"
+                       asp-route-interventieId="@item.InterventieId"
+                       asp-route-piesaDeSchimbId="@item.PiesaDeSchimbId">
+                        Delete
+                    </a>
+                </td>
+
         </tr>
 }
     </tbody>

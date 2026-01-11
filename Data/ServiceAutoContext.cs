@@ -33,6 +33,14 @@ namespace ServiceAuto.Web.Data
                 .HasOne(ip => ip.PiesaDeSchimb)
                 .WithMany(p => p.InterventiiPiese)
                 .HasForeignKey(ip => ip.PiesaDeSchimbId);
+            modelBuilder.Entity<InterventiePiesa>()
+                .Property(p => p.PretUnitarLaDataAplicarii)
+                   .HasPrecision(18, 2);
+
+            modelBuilder.Entity<PiesaDeSchimb>()
+                .Property(p => p.Pret)
+                .HasPrecision(18, 2);
+
         }
     }
 }
