@@ -1,0 +1,49 @@
+﻿@page
+@model ServiceAuto.Web.Pages.Mecanici.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Mecanic</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanic.Nume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanic.Nume)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanic.Prenume)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanic.Prenume)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanic.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanic.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanic.ParolaHash)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanic.ParolaHash)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mecanic.Rol)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mecanic.Rol)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Mecanic.MecanicId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

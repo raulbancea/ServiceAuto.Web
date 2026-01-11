@@ -1,0 +1,47 @@
+﻿@page
+@model ServiceAuto.Web.Pages.InterventiePiese.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InterventiePiesa</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InterventiePiesa.Cantitate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InterventiePiesa.Cantitate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InterventiePiesa.PretUnitarLaDataAplicarii)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InterventiePiesa.PretUnitarLaDataAplicarii)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InterventiePiesa.Interventie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InterventiePiesa.Interventie.DescriereProblema)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InterventiePiesa.PiesaDeSchimb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InterventiePiesa.PiesaDeSchimb.CodProdus)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="InterventiePiesa.InterventieId" />
+        <input type="hidden" asp-for="InterventiePiesa.PiesaDeSchimbId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

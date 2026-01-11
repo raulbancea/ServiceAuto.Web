@@ -1,0 +1,58 @@
+﻿@page
+@model ServiceAuto.Web.Pages.PieseDeSchimb.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PiesaDeSchimb</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PiesaDeSchimb.PiesaDeSchimbId" />
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PiesaDeSchimb.Denumire" class="control-label"></label>
+                <input asp-for="PiesaDeSchimb.Denumire" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PiesaDeSchimb.Denumire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PiesaDeSchimb.CodProdus" class="control-label"></label>
+                <input asp-for="PiesaDeSchimb.CodProdus" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PiesaDeSchimb.CodProdus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+<span class="text-danger">*</span>
+                <label asp-for="PiesaDeSchimb.Furnizor" class="control-label"></label>
+                <input asp-for="PiesaDeSchimb.Furnizor" class="form-control" aria-required="true"/>
+                <span asp-validation-for="PiesaDeSchimb.Furnizor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PiesaDeSchimb.Pret" class="control-label"></label>
+                <input asp-for="PiesaDeSchimb.Pret" class="form-control" />
+                <span asp-validation-for="PiesaDeSchimb.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PiesaDeSchimb.Stoc" class="control-label"></label>
+                <input asp-for="PiesaDeSchimb.Stoc" class="form-control" />
+                <span asp-validation-for="PiesaDeSchimb.Stoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

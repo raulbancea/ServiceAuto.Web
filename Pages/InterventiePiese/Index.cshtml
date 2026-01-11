@@ -1,0 +1,54 @@
+﻿@page
+@model ServiceAuto.Web.Pages.InterventiePiese.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InterventiePiesa[0].Cantitate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterventiePiesa[0].PretUnitarLaDataAplicarii)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterventiePiesa[0].Interventie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterventiePiesa[0].PiesaDeSchimb)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.InterventiePiesa) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PretUnitarLaDataAplicarii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Interventie.DescriereProblema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PiesaDeSchimb.CodProdus)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

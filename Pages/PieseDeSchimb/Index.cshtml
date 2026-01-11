@@ -1,0 +1,60 @@
+﻿@page
+@model ServiceAuto.Web.Pages.PieseDeSchimb.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PiesaDeSchimb[0].Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PiesaDeSchimb[0].CodProdus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PiesaDeSchimb[0].Furnizor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PiesaDeSchimb[0].Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PiesaDeSchimb[0].Stoc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PiesaDeSchimb) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodProdus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Furnizor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stoc)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PiesaDeSchimbId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PiesaDeSchimbId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PiesaDeSchimbId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
