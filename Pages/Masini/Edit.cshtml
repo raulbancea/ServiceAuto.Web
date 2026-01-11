@@ -1,0 +1,64 @@
+﻿@page
+@model ServiceAuto.Web.Pages.Masini.EditModel
+
+<h1>Edit</h1>
+<h4>Masina</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="Masina.MasinaId" />
+
+            <div class="form-group">
+                <label asp-for="Masina.NumarInmatriculare"></label>
+                <input asp-for="Masina.NumarInmatriculare" class="form-control" />
+                <span asp-validation-for="Masina.NumarInmatriculare" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Masina.Marca"></label>
+                <input asp-for="Masina.Marca" class="form-control" />
+                <span asp-validation-for="Masina.Marca" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Masina.Model"></label>
+                <input asp-for="Masina.Model" class="form-control" />
+                <span asp-validation-for="Masina.Model" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Masina.AnFabricatie"></label>
+                <input asp-for="Masina.AnFabricatie" class="form-control" />
+                <span asp-validation-for="Masina.AnFabricatie" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Masina.SerieSasiu"></label>
+                <input asp-for="Masina.SerieSasiu" class="form-control" />
+                <span asp-validation-for="Masina.SerieSasiu" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Masina.ClientId">Client</label>
+                <select asp-for="Masina.ClientId"
+                        class="form-control"
+                        asp-items="Model.ClientList">
+                </select>
+                <span asp-validation-for="Masina.ClientId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

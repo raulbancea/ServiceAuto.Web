@@ -1,0 +1,27 @@
+﻿@page
+@model ServiceAuto.Web.Pages.Masini.DeleteModel
+
+<h1>Delete</h1>
+
+<h3>Sigur vrei să ștergi această mașină?</h3>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-4">Număr</dt>
+    <dd class="col-sm-8">@Model.Masina.NumarInmatriculare</dd>
+
+    <dt class="col-sm-4">Marca</dt>
+    <dd class="col-sm-8">@Model.Masina.Marca</dd>
+
+    <dt class="col-sm-4">Model</dt>
+    <dd class="col-sm-8">@Model.Masina.Model</dd>
+
+    <dt class="col-sm-4">Client</dt>
+    <dd class="col-sm-8">@Model.Masina.Client.Nume</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Masina.MasinaId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-page="./Index" class="btn btn-secondary">Back</a>
+</form>

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 
 namespace ServiceAuto.Web.Models
 {
@@ -21,5 +23,6 @@ namespace ServiceAuto.Web.Models
 
         [Required]
         public string TipClient { get; set; } // Persoana Fizica / Juridica
+        public ICollection<Masina> Masini { get; set; } = new List<Masina>();
     }
 }
